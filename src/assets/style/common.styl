@@ -1,0 +1,103 @@
+@import "./variable.styl"
+.sub-components
+  position fixed
+  z-index 101
+  top 0
+  bottom 0
+  left 0
+  right 0
+  background-image url("//i.loli.net/2020/04/26/LZQxkVOPrTzHYjD.jpg")
+  background-repeat no-repeat
+  background-size cover
+  text-align center
+
+  &:after
+    content ""
+    width 100%
+    height 100%
+    position absolute
+    left 0
+    top 0
+    background inherit
+    filter blur(1px)
+    z-index: -1;
+
+.cover
+  width 90%
+  margin-top 20px
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+  /*考虑浏览器兼容性*/
+  -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+  border-radius 8px
+
+
+.title
+  padding 10px
+  display flex
+  flex-direction row
+  align-items center
+  font-size 18px
+  font-weight bolder
+  color $color-text
+  background-color $color-background-d
+
+  .text
+    width calc(100% - 65px)
+    text-align center
+
+  .back
+    z-index 51
+    width 35px
+    height 35px
+    margin-right 8px
+
+.icon
+  width 30px
+  height 30px
+  vertical-align -0.15em
+  fill currentColor
+  overflow hidden
+
+/*自定义动画类----顺时针旋转（使用这个动画的时候才设置动画执行时间）*/
+@-webkit-keyframes changeRight
+  0%
+    -webkit-transform: rotate(0deg)
+  50%
+    -webkit-transform: rotate(180deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+/*自定义动画类----逆时针旋转（使用这个动画的时候才设置动画执行时间）*/
+@-webkit-keyframes changeLeft
+  0%
+    -webkit-transform: rotate(0deg)
+  50%
+    -webkit-transform: rotate(-180deg)
+  100%
+    -webkit-transform: rotate(-360deg)
+
+
+@keyframes rotate
+  0%
+    transform: rotate(0)
+  100%
+    transform: rotate(360deg)
+
+
+.slide-left-enter, .slide-right-leave-active
+  opacity 0
+  -webkit-transform: translate(30px, 0)
+  transform: translate(30px, 0)
+
+
+.slide-left-leave-active, .slide-right-enter
+  opacity 0
+  -webkit-transform: translate(-30px, 0)
+  transform: translate(-30px, 0)
+
+.child-view
+  width: 100%;
+  height: 100%;
+  transition: all .5s cubic-bezier(.55,0,.1,1)
